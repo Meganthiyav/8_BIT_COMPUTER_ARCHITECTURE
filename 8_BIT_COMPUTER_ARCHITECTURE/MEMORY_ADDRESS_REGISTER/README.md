@@ -190,6 +190,11 @@ endmodule
 ```
 
 ## waveform
+
+<img width="1078" height="645" alt="image" src="https://github.com/user-attachments/assets/58dab92d-15fc-40ea-9dc3-4cb5e34ee2c5" />
+
 ## schematic
+<img width="1165" height="652" alt="image" src="https://github.com/user-attachments/assets/a11a36da-eee8-44ed-a885-17fbc5718245" />
+
 
 
