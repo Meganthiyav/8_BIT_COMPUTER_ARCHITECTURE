@@ -53,5 +53,59 @@ assign out = pc;
 endmodule
 ```
 ## TESTBENCH
+```verilog
+module pc_tb;
+
+reg clk;
+reg rst;
+reg inc;
+reg load;
+reg [3:0] jump_addr;
+wire [3:0] out;
+
+pc dut(
+    .clk(clk),
+    .rst(rst),
+    .inc(inc),
+    .load(load),
+    .jump_addr(jump_addr),
+    .out(out)
+);
+
+always #5 clk = ~clk;
+
+initial
+begin
+    $monitor("Time=%0t rst=%b inc=%b load=%b jump_addr=%d PC=%d",
+              $time, rst, inc, load, jump_addr, out);
+
+    clk = 0;
+    rst = 1;
+    inc = 0;
+    load = 0;
+    jump_addr = 0;
+
+    #10 rst = 0;
+
+    // Increment PC
+    inc = 1;
+    #20;
+
+    // Jump to address 10
+    inc = 0;
+    load = 1;
+    jump_addr = 4'd10;
+    #10;
+
+    // Continue incrementing
+    load = 0;
+    inc = 1;
+    #20;
+
+    $finish;
+end
+
+endmodule
+```
 ## waveform
 ## schematic
