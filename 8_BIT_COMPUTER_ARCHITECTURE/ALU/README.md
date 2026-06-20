@@ -105,3 +105,8 @@ Any change in the input operands or control signal immediately triggers recomput
 The ALU serves as the primary execution unit of the processor, enabling arithmetic calculations, logical decision-making, data manipulation, and status flag generation required during instruction execution. It works closely with the A Register, B Register, Flag Register, and Control Unit to execute processor instructions efficiently.
 
 This style looks much closer to a professional FPGA/Computer Architecture GitHub project report and thesis documentation. 🚀
+
+## RTL
+## TESTBENCH
+## waveform
+## schematic
