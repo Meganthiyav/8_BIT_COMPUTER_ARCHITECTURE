@@ -80,7 +80,106 @@ Within the architecture, the Instruction Register acts as the processor's instru
 Without the IR, the processor would lack a reliable mechanism to preserve and interpret instructions, making structured program execution impossible.
 
 ## RTL
+## RTL Code
+
+```verilog
+`timescale 1ns / 1ps
+
+module ir (
+    input        clk,
+    input        rst,
+    input        ctrl_ir,
+    input  [7:0] d_in,
+
+    output [3:0] opc,
+    output [3:0] opr
+);
+
+    reg [7:0] ir;
+
+    always @(posedge clk) begin
+        if (rst)
+            ir <= 8'b00000000;
+        else if (ctrl_ir)
+            ir <= d_in;
+    end
+
+    assign opc = ir[7:4];
+    assign opr = ir[3:0];
+
+endmodule
+```
 ## TESTBENCH
+## 🧪 Testbench Code
+
+```verilog
+`timescale 1ns / 1ps
+
+module ir_tb;
+
+    reg        clk;
+    reg        rst;
+    reg        ctrl_ir;
+    reg  [7:0] d_in;
+
+    wire [3:0] opc;
+    wire [3:0] opr;
+
+    // Instantiate Instruction Register
+    ir DUT (
+        .clk(clk),
+        .rst(rst),
+        .ctrl_ir(ctrl_ir),
+        .d_in(d_in),
+        .opc(opc),
+        .opr(opr)
+    );
+
+    // Clock Generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+
+    // Monitor Signals
+    initial begin
+        $monitor("Time=%0t | clk=%b | rst=%b | ctrl_ir=%b | d_in=%b | opc=%b | opr=%b",
+                  $time, clk, rst, ctrl_ir, d_in, opc, opr);
+    end
+
+    // Test Stimulus
+    initial begin
+        // Reset
+        rst = 1;
+        ctrl_ir = 0;
+        d_in = 8'b00000000;
+
+        #10;
+        rst = 0;
+
+        // Load First Instruction
+        #5;
+        d_in = 8'b00001111;
+        ctrl_ir = 1;
+
+        // Hold Instruction
+        #10;
+        d_in = 8'b11110000;
+        ctrl_ir = 0;
+
+        #20;
+        $finish;
+    end
+
+endmodule
+```
+
+
 ## waveform
+<img width="1891" height="967" alt="image" src="https://github.com/user-attachments/assets/32f35e85-c367-4450-86ad-1e75062e9f16" />
+
+
 ## schematic
+<img width="1206" height="971" alt="image" src="https://github.com/user-attachments/assets/42034552-d67a-4463-bb4f-e7f04aa43d2f" />
+
 
