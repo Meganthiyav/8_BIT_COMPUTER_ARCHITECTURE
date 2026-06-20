@@ -108,4 +108,7 @@ end
 endmodule
 ```
 ## waveform
+<img width="1087" height="635" alt="image" src="https://github.com/user-attachments/assets/fa5e1a63-ef9f-44c7-9759-f26492661c80" />
+
 ## schematic
+<img width="1162" height="653" alt="image" src="https://github.com/user-attachments/assets/52dfba3c-0052-451e-afa3-6ea9f4993f0c" />
