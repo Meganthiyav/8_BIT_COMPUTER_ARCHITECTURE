@@ -407,7 +407,5 @@ module computer_top_tb;
 
 endmodule
 ```
-## waveform
 
-## schematic
 
