@@ -150,7 +150,9 @@ As the highest abstraction level of the design, it embodies the complete process
 module computer_top(
     input clk,
     input rst,
-
+    input start,ram_load ,
+    input [7:0] ram_data,
+    input [3:0] ram_addr,
     output [3:0] anodes,
     output [7:0] seg
 );
@@ -248,7 +250,8 @@ module computer_top(
     ram internal_sram (
         .clk(system_slow_clk),
         .rst(rst),
-
+        .ram_data(ram_data),
+        .ram_addr(ram_addr),
         .we_a(ctrl_ram_we_a),
         .re_a(ctrl_ram_re_a),
         .addr_a(mar_to_ram),
