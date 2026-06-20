@@ -114,7 +114,81 @@ The Memory Address Register forms the processor's addressing interface and plays
 The MAR works in coordination with the Program Counter, Instruction Register, RAM, system bus, and Control Unit to ensure accurate memory addressing throughout the execution cycle of the processor.
 
 ## RTL
+```verilog
+module ram(
+    input clk,
+    input write_en,
+    input [3:0] address,
+    input [7:0] data_in,
+    output reg [7:0] data_out
+);
+
+reg [7:0] memory [0:15];
+
+always @(posedge clk)
+begin
+    if(write_en)
+        memory[address] <= data_in;
+
+    data_out <= memory[address];
+end
+
+endmodule
+```
 ## TESTBENCH
+```verilog
+module ram_tb;
+
+reg clk;
+reg write_en;
+reg [3:0] address;
+reg [7:0] data_in;
+wire [7:0] data_out;
+
+ram uut(
+    .clk(clk),
+    .write_en(write_en),
+    .address(address),
+    .data_in(data_in),
+    .data_out(data_out)
+);
+
+always #5 clk = ~clk;
+
+initial
+begin
+    clk = 0;
+    write_en = 0;
+    address = 0;
+    data_in = 0;
+    #10;
+    write_en = 1;
+    address = 4'b0101;
+    data_in = 8'b00001000;
+    #10;
+    write_en = 0;
+    #10;
+    address = 4'b0101;
+    #10;
+    write_en = 1;
+    address = 4'b0110;
+    data_in = 8'b00000011;
+    #10;
+    write_en = 0;
+    #10;
+    address = 4'b0110;
+    #20;
+    $finish;
+end
+initial
+begin
+    $monitor("Time=%0t write_en=%b address=%d data_in=%d data_out=%d",
+              $time, write_en, address, data_in, data_out);
+end
+
+endmodule
+```
+
 ## waveform
 ## schematic
 
