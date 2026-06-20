@@ -113,4 +113,9 @@ The Memory Address Register forms the processor's addressing interface and plays
 
 The MAR works in coordination with the Program Counter, Instruction Register, RAM, system bus, and Control Unit to ensure accurate memory addressing throughout the execution cycle of the processor.
 
+## RTL
+## TESTBENCH
+## waveform
+## schematic
+
 
