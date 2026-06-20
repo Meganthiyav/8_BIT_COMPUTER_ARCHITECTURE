@@ -24,3 +24,8 @@ Cycle 4 → Address 3
 ### Within the Architecture
 
 Every instruction fetch begins with the Program Counter. Its output is transferred to the Memory Address Register, making it the starting point of the fetch cycle.
+
+## RTL
+## TESTBENCH
+## waveform
+## schematic
