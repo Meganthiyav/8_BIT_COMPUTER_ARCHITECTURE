@@ -50,5 +50,7 @@
 ---     
 ## ⚙️ Development Platform
 FPGA Board: Spartan-7 Boolean FPGA Board
+
 Design Language: Verilog HDL
+
 Design Methodology: RTL (Register Transfer Level)
