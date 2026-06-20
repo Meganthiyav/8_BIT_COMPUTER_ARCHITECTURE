@@ -26,6 +26,32 @@ Cycle 4 → Address 3
 Every instruction fetch begins with the Program Counter. Its output is transferred to the Memory Address Register, making it the starting point of the fetch cycle.
 
 ## RTL
+```verilog
+module pc(
+    input clk,
+    input rst,
+    input inc,
+    input load,
+    input [3:0] jump_addr,
+    output [3:0] out
+);
+
+reg [3:0] pc;
+
+always @(posedge clk or posedge rst)
+begin
+    if(rst)
+        pc <= 4'b0000;
+    else if(load)
+        pc <= jump_addr;
+    else if(inc)
+        pc <= pc + 1'b1;
+end
+
+assign out = pc;
+
+endmodule
+```
 ## TESTBENCH
 ## waveform
 ## schematic
