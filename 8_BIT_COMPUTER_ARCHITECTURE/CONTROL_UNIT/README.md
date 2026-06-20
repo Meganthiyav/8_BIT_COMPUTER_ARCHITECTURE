@@ -184,3 +184,8 @@ The Control Unit serves as the **central coordinator** of the processor and dete
 
 By generating precise timing and control signals, the Control Unit enables seamless interaction between the processor's registers, memory subsystem, and arithmetic logic circuitry, making it the core decision-making component of the processor architecture.
 
+## RTL
+## TESTBENCH
+## waveform
+## schematic
+
