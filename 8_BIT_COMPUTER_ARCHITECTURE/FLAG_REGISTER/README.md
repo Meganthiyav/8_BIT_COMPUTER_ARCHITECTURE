@@ -20,3 +20,8 @@ Set when an arithmetic operation produces a carry or borrow.
 
 ## 🎯 Purpose
 Provides status feedback required for decision-making and control flow operations.
+
+## RTL
+## TESTBENCH
+## waveform
+## schematic
