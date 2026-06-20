@@ -36,10 +36,8 @@
 ---
 
 ## 🧱 Architecture Overview (Block Diagram)
+<img width="1510" height="888" alt="image" src="https://github.com/user-attachments/assets/c6154510-bc9f-4e62-a64f-76bedfaf6fac" />
 
-
-
----
 
 ## 🔄 Instruction Cycle
 
@@ -53,5 +51,4 @@
 
 ## 🧠 Instruction Set
      
----
-# 8_BIT_COMPUTER_ARCHITECTURE
+
