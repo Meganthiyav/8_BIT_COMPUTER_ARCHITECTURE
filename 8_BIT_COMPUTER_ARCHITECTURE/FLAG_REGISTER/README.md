@@ -22,6 +22,107 @@ Set when an arithmetic operation produces a carry or borrow.
 Provides status feedback required for decision-making and control flow operations.
 
 ## RTL
+```verilog
+module flag_register(
+    input clk,
+    input rst,
+    input flag_en,
+
+    input [7:0] result,
+    input carry_out,
+
+    output reg z,
+    output reg c
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        z <= 1'b0;
+        c <= 1'b0;
+    end
+    else if (flag_en) begin
+        z <= (result == 8'b00000000);
+        c <= carry_out;
+    end
+end
+
+endmodule
+```
 ## TESTBENCH
+```verilog
+`timescale 1ns / 1ps
+
+module tb_flag_register;
+
+reg clk;
+reg rst;
+reg flag_en;
+reg [7:0] result;
+reg carry_out;
+
+wire c;
+wire z;
+
+flag_register dut (
+    .clk(clk),
+    .rst(rst),
+    .flag_en(flag_en),
+    .result(result),
+    .carry_out(carry_out),
+    .c(c),
+    .z(z)
+);
+
+always #5 clk = ~clk;
+
+initial begin
+
+    clk = 0;
+    rst = 1;
+    flag_en = 0;
+    result = 8'b00000000;
+    carry_out = 1'b0;
+
+    #10 rst = 0;
+
+    #10;
+    flag_en = 1;
+    result = 8'd15;
+    carry_out = 1'b0;
+
+    #10;
+    result = 8'd0;
+    carry_out = 1'b0;
+
+    #10;
+    result = 8'd0;
+    carry_out = 1'b1;
+
+    #10;
+    result = 8'd100;
+    carry_out = 1'b1;
+
+    #10;
+    flag_en = 0;
+    result = 8'd0;
+    carry_out = 1'b0;
+
+    #20 $finish;
+
+end
+
+initial begin
+
+    $monitor("%0t\t%b\t%b\t%d\t%b\t\t%b\t%b",
+              $time,rst,flag_en,result,carry_out,z,c);
+end
+
+endmodule
+```
 ## waveform
+<img width="1888" height="906" alt="image" src="https://github.com/user-attachments/assets/1de27056-ba31-4646-b52c-89d2b3dd4440" />
+
+
 ## schematic
+<img width="1900" height="922" alt="image" src="https://github.com/user-attachments/assets/69f67f91-be3e-4e98-a92e-d062ff63288b" />
+
