@@ -216,11 +216,8 @@ Each RTL module was individually verified through simulation before integration.
 ## 📈 Future Enhancements
 
 * Expand Memory to 256×8
-* Stack Pointer Support
-* CALL and RET Instructions
 * UART-Based Program Loading
 * Interrupt Handling
-* Microcoded Control Unit
 * Pipelined Architecture
 * Hardware Debug Interface
 * Instruction Prefetch Mechanism
