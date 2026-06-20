@@ -79,3 +79,8 @@ Within the architecture, the Instruction Register acts as the processor's instru
 
 Without the IR, the processor would lack a reliable mechanism to preserve and interpret instructions, making structured program execution impossible.
 
+## RTL
+## TESTBENCH
+## waveform
+## schematic
+
