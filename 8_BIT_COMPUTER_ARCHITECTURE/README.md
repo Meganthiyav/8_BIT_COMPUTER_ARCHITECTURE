@@ -47,6 +47,28 @@
 * **T3:** Operand fetch (if required)
 * **T4+:** Execution via ALU / register transfer
 
+## ISA
+## Instruction Set Architecture (ISA)
+
+| Opcode | Mnemonic | Description                              |
+| ------ | -------- | ---------------------------------------- |
+| `0000` | ADD      | Add memory operand to accumulator        |
+| `0001` | SUB      | Subtract memory operand from accumulator |
+| `0010` | INC      | Increment accumulator by 1               |
+| `0011` | DEC      | Decrement accumulator by 1               |
+| `0100` | ANDI     | Bitwise AND with memory operand          |
+| `0101` | ORI      | Bitwise OR with memory operand           |
+| `0110` | EXOR     | Bitwise Exclusive-OR with memory operand |
+| `0111` | NOT      | Bitwise NOT of accumulator               |
+| `1000` | LDA      | Load accumulator from memory             |
+| `1001` | STA      | Store accumulator to memory              |
+| `1010` | JMP      | Unconditional jump                       |
+| `1011` | JC       | Jump if Carry flag is set                |
+| `1100` | JZ       | Jump if Zero flag is set                 |
+| `1101` | JNZ      | Jump if Zero flag is not set             |
+| `1110` | LDI      | Load immediate data into accumulator     |
+| `1111` | HLT      | Halt processor execution                 |
+
 ---     
 ## ⚙️ Development Platform
 FPGA Board: Spartan-7 Boolean FPGA Board
